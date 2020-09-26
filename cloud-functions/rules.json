@@ -1,0 +1,32 @@
+{
+    "rules":{
+       "$namespace":{
+          "groups":{
+             "$groupId":{
+                "messages":{
+                   "$path":{
+                      ".write":"root.child($namespace).child('groups').child($groupId).child('members').hasChild(auth.uid)"
+                   }
+                },
+                "state":{
+                   ".read":"root.child($namespace).child('groups').child($groupId).child('members').hasChild(auth.uid)",
+                   "$path":{
+                      ".write":"root.child($namespace).child('groups').child($groupId).child('members').hasChild(auth.uid)"
+                   }
+                }
+             }
+          },
+          "members":{
+             "$memberId":{
+                "messages":{
+                   ".write":"$memberId === auth.uid",
+                   ".read":"$memberId === auth.uid"
+                },
+                "queue":{
+                   ".write":"auth.uid !== null && !root.child($namespace).child('members').child('blocks').hasChild(auth.uid)"
+                }
+             }
+          }
+       }
+    }
+ }
