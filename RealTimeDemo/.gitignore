@@ -31,3 +31,4 @@ Pods/
 
 *.pem
 *.p12
+RealTimeDemo/GoogleService-Info.plist
